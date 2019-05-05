@@ -1,4 +1,4 @@
-# AWS Appsync Handler
+# AWS AppsSync Handler
 
 ## Resolver signatures
 
@@ -18,7 +18,7 @@ func(context.Context, in) (out, error)
 
 ## Example
 
-### Appsync Request Mapping Template
+### AppSync Request Mapping Template
 
 ```vtl
 {
@@ -46,7 +46,7 @@ import (
     "github.com/bearchit/appsync-handler"
 )
 
-// You can access `arguments` in the payload with struct `postInput`
+
 type postsInput struct {
     UserID    string `json:"userID"`
     Limit     uint64 `json:"limit"`
@@ -63,6 +63,11 @@ func main() {
     h := appsync.NewHandler()
 
     h.AddResolver("query.post", func(ctx context.Context, input *postsInput) ([]*post, error) {
+        // You can access `arguments` in the payload with struct `postInput`
+        log.Println(input.UserID)
+        log.Println(input.Limit)
+        log.Println(input.NextToken)
+
         return []*post{
             {
                 ID:      "1",
