@@ -82,7 +82,6 @@ func main() {
         }, nil
     })
 
-    // If you want to start lambda function, comment out below.
-    // lambda.Start(h.Handle)
+    lambda.Start(h.Handle)
 }
 ```
