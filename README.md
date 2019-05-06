@@ -14,7 +14,7 @@ func(context.Context) (out, error)
 func(context.Context, in) (out, error)
 ```
 
-"in", "out" are types compatiable with the "encoding/json".
+"in", "out" are types compatiable with the [encoding/json](https://golang.org/pkg/encoding/json).
 
 ## Example
 
