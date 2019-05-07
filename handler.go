@@ -3,7 +3,6 @@ package appsync
 import (
 	"context"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"reflect"
 )
@@ -43,7 +42,7 @@ func (h handler) Handle(ctx context.Context, raw json.RawMessage) (interface{}, 
 
 	resolverFunc, ok := h.resolvers[payload.Resolve]
 	if !ok {
-		return nil, errors.New("no matched resolver")
+		return nil, fmt.Errorf("no matched resolver: %s", payload.Resolve)
 	}
 
 	resolver := reflect.ValueOf(resolverFunc)
